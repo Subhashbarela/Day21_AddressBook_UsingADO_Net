@@ -10,7 +10,16 @@ namespace Day21_CustomerDetailsDB
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World");
+            CustomerClass customer = new CustomerClass();
+            customer.Customer_Name = "Rajvir";
+            customer.PhoneNumber = 8654357756;
+            customer.Address = "Rajstan";
+            customer.Country = "India";
+            customer.Salary = 4535353;
+            customer.Pincode = 543435;
+
+            CustomerInfo info = new CustomerInfo();
+            info.InsertDataFromCustomerClass(customer);
         }
     }
 }
