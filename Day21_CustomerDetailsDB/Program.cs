@@ -22,7 +22,7 @@ namespace Day21_CustomerDetailsDB
             string ans = "";
             do
             {
-                Console.WriteLine("1: Insert the data \n2: display the data\n3: Delete record");
+                Console.WriteLine("1: Insert the data \n2: display the data\n3: Delete record\n4: Update Salary");
                 Console.WriteLine("Select One from above List");
                 int choice = int.Parse(Console.ReadLine());
                 switch (choice)
@@ -35,6 +35,9 @@ namespace Day21_CustomerDetailsDB
                         break;
                     case 3:
                         info.DeleteDataFromDatabase();
+                        break;
+                    case 4:
+                        info.UpdateSalary();
                         break;
                 }
                 Console.WriteLine("Do you want to continue ?");

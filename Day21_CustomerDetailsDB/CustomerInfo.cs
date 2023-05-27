@@ -114,6 +114,38 @@ namespace Day21_CustomerDetailsDB
                 sqlConnection.Close();
             }
         }
+        public void UpdateSalary()
+        {
+            try
+            {
+                sqlConnection.Open();
+                Console.WriteLine("insert the Salary you want ");
+                string salary = Console.ReadLine();
+                Console.WriteLine("insert the name that you change ");
+                string name=Console.ReadLine();
+                string updateQuery = @"update Customer set Salary ='" + salary + "' where Customer_Name ='" + name + "'";
+                SqlCommand cmd = new SqlCommand(updateQuery, sqlConnection);
+                int result = cmd.ExecuteNonQuery();
+                int cont = 1;
+                if (result >= 1)
+                {
+                    Console.WriteLine($"{cont} row(s) affected..!");
+                    cont++;
+                }
+                else
+                {
+                    Console.WriteLine("Error while updating");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+        }
 
     }
 }
