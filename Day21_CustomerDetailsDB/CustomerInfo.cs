@@ -47,7 +47,45 @@ namespace Day21_CustomerDetailsDB
             {
                 sqlConnection.Close();
             }
-        }           
+        }
+        public void DisplayDataFromDatabase()
+        {
+            CustomerClass customer = new CustomerClass();
+            try
+            {
+                string searchQuery = @"Select * from Customer";
+                SqlCommand cmd = new SqlCommand(searchQuery, sqlConnection);
+                sqlConnection.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                   // Console.WriteLine("Id CustomerName Address Country Salary Pincode ");
+                    Console.WriteLine(".......................................................");
+                    while (dr.Read())
+                    {
+                        customer.C_Id = dr.GetInt32(0);
+                        customer.Customer_Name = dr.GetString(1);
+                        customer.PhoneNumber = dr.GetInt64(2);
+                        customer.Address = dr.GetString(3);
+                        customer.Country = dr.GetString(4);
+                        customer.Salary = dr.GetInt32(5);
+                        customer.Pincode = dr.GetInt32(6);                        
+                        Console.WriteLine("{0}  {1}  {2}  {3}  {4}  {5}  {6}", customer.C_Id, customer.Customer_Name, customer.PhoneNumber, customer.Address, customer.Country, customer.Salary, customer.Pincode);
+                        Console.WriteLine();
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Data not found");
+                }
+                sqlConnection.Close();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
 
     }
 }

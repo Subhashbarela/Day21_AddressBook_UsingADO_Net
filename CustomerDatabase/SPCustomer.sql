@@ -11,3 +11,4 @@ AS BEGIN
 insert into Customer(Customer_Name,PhoneNumber,Address,Country,Salary,Pincode)
 values(@Customer_Name,@PhoneNumber,@Address,@Country,@Salary,@Pincode)
 END
+

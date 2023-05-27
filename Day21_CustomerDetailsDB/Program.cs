@@ -19,7 +19,23 @@ namespace Day21_CustomerDetailsDB
             customer.Pincode = 543435;
 
             CustomerInfo info = new CustomerInfo();
-            info.InsertDataFromCustomerClass(customer);
+            string ans = "";
+            do
+            {
+                Console.WriteLine("1: Insert the data \n2: display the data");
+                Console.WriteLine("Select One from above List");
+                int choice = int.Parse(Console.ReadLine());
+                switch (choice)
+                {
+                    case 1: info.InsertDataFromCustomerClass(customer);
+                        break;
+                    case 2:info.DisplayDataFromDatabase();
+                        break;
+                }
+                Console.WriteLine("Do you want to continue ?");
+                ans= Console.ReadLine();
+            } while (ans=="yes" || ans=="y");
+           
         }
     }
 }
