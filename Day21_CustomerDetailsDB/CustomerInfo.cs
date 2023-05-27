@@ -86,6 +86,34 @@ namespace Day21_CustomerDetailsDB
                 Console.WriteLine(ex.Message);
             }
         }
+        public void DeleteDataFromDatabase()
+        {
+            try
+            {
+                sqlConnection.Open();
+                Console.WriteLine("insert the id that row wanto to delete");
+                int id = int.Parse(Console.ReadLine());
+                string deleteQuery = @"delete from Customer where CustomerId='" + id + "'";
+                SqlCommand cmd = new SqlCommand(deleteQuery, sqlConnection);
+                int result = cmd.ExecuteNonQuery();
+                if (result >= 1)
+                {
+                    Console.WriteLine($"{result} row(s)is deleted..");
+                }
+                else
+                {
+                    Console.WriteLine("Erroe while deleting data");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+        }
 
     }
 }
